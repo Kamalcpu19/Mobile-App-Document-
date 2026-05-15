@@ -2,11 +2,16 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import navigationData from "@/data/navigation.json";
+import {
+  getDocHref,
+  getSectionId,
+} from "@/lib/doc-navigation";
 import type {
   DocsNavigation,
   Module,
   Submodule,
   DocPageMeta,
+  DocSection,
   SearchResult,
   TocItem,
 } from "@/types/docs";
@@ -44,8 +49,39 @@ export function getAllDocPaths(): { moduleSlug: string; submoduleSlug: string }[
   return paths;
 }
 
-export function getDocHref(moduleSlug: string, submoduleSlug: string): string {
-  return `/docs/${moduleSlug}/${submoduleSlug}`;
+export {
+  getDocHref,
+  getSectionId,
+  parseSectionId,
+} from "@/lib/doc-navigation";
+
+export function getAllDocSections(): DocSection[] {
+  const sections: DocSection[] = [];
+
+  for (const mod of getModules()) {
+    const sortedSubs = [...mod.submodules].sort(
+      (a, b) => (a.order ?? 0) - (b.order ?? 0)
+    );
+
+    for (const sub of sortedSubs) {
+      const doc = getDocContent(mod.slug, sub.slug);
+      if (!doc) continue;
+
+      sections.push({
+        sectionId: getSectionId(mod.slug, sub.slug),
+        moduleSlug: mod.slug,
+        submoduleSlug: sub.slug,
+        moduleTitle: mod.title,
+        title: doc.meta.title,
+        description: doc.meta.description,
+        lastUpdated: doc.meta.lastUpdated,
+        content: doc.content,
+        href: getDocHref(mod.slug, sub.slug),
+      });
+    }
+  }
+
+  return sections;
 }
 
 export function getDocContent(

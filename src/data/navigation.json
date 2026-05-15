@@ -15,8 +15,22 @@
           "id": "overview",
           "title": "Overview",
           "slug": "overview",
-          "description": "Product name, objective, and target users",
+          "description": "Documentation purpose, version, and prepared by",
           "order": 1
+        },
+        {
+          "id": "product-objective",
+          "title": "Product & Objective",
+          "slug": "product-objective",
+          "description": "Product name and application objective",
+          "order": 2
+        },
+        {
+          "id": "target-users",
+          "title": "Target Users",
+          "slug": "target-users",
+          "description": "Garage owners, advisors, technicians, billing staff",
+          "order": 3
         }
       ]
     },
@@ -29,11 +43,32 @@
       "order": 2,
       "submodules": [
         {
-          "id": "login-authentication",
-          "title": "Login & Authentication",
-          "slug": "login-authentication",
-          "description": "Sign in, forgot password, and create account flows",
+          "id": "user-sign-in",
+          "title": "User Sign In",
+          "slug": "user-sign-in",
+          "description": "Username, password, and sign in flow",
           "order": 1
+        },
+        {
+          "id": "forgot-password",
+          "title": "Forgot Password",
+          "slug": "forgot-password",
+          "description": "Password recovery via OTP or verification",
+          "order": 2
+        },
+        {
+          "id": "create-account",
+          "title": "Create Account",
+          "slug": "create-account",
+          "description": "New user registration flow",
+          "order": 3
+        },
+        {
+          "id": "validations",
+          "title": "Validations & Expected Results",
+          "slug": "validations",
+          "description": "Field validations and success criteria",
+          "order": 4
         }
       ]
     },
@@ -49,8 +84,50 @@
           "id": "landing-page-dashboard",
           "title": "Landing Page Dashboard",
           "slug": "landing-page-dashboard",
-          "description": "Customer messages, appointments, vehicles, and payments",
+          "description": "Dashboard overview and available sections",
           "order": 1
+        },
+        {
+          "id": "customer-messages-reminder",
+          "title": "Customer Messages Reminder",
+          "slug": "customer-messages-reminder",
+          "description": "Pending customer messages awaiting response",
+          "order": 2
+        },
+        {
+          "id": "appointments-scheduled",
+          "title": "Appointments Scheduled",
+          "slug": "appointments-scheduled",
+          "description": "Daily appointment schedule count on dashboard",
+          "order": 3
+        },
+        {
+          "id": "vehicles-requiring-attention",
+          "title": "Vehicles Requiring Attention",
+          "slug": "vehicles-requiring-attention",
+          "description": "Vehicles needing service attention or follow-up",
+          "order": 4
+        },
+        {
+          "id": "pending-payments-reminder",
+          "title": "Pending Payments Reminder",
+          "slug": "pending-payments-reminder",
+          "description": "Pending customer payments on dashboard",
+          "order": 5
+        },
+        {
+          "id": "create-ro-quick-action",
+          "title": "Create RO Quick Action",
+          "slug": "create-ro-quick-action",
+          "description": "Quick action to create a new repair order",
+          "order": 6
+        },
+        {
+          "id": "profile-icon-access",
+          "title": "Profile Icon Access",
+          "slug": "profile-icon-access",
+          "description": "Profile icon on dashboard for settings access",
+          "order": 7
         }
       ]
     },
@@ -157,11 +234,32 @@
       "order": 5,
       "submodules": [
         {
-          "id": "customer-messages",
-          "title": "Customer Messages Module",
-          "slug": "customer-messages",
-          "description": "Conversations, quick reply, and AI complaints",
+          "id": "module-overview",
+          "title": "Module Overview",
+          "slug": "module-overview",
+          "description": "Customer messages module introduction",
           "order": 1
+        },
+        {
+          "id": "customer-conversations",
+          "title": "Customer Conversations",
+          "slug": "customer-conversations",
+          "description": "Manage customer communications and conversations",
+          "order": 2
+        },
+        {
+          "id": "ai-complaint-detection",
+          "title": "AI Complaint Detection",
+          "slug": "ai-complaint-detection",
+          "description": "AI detects complaints and attaches to job card",
+          "order": 3
+        },
+        {
+          "id": "quick-reply-actions",
+          "title": "Quick Reply & Actions",
+          "slug": "quick-reply-actions",
+          "description": "Quick reply, call, camera, and communication flow",
+          "order": 4
         }
       ]
     },
@@ -174,11 +272,25 @@
       "order": 6,
       "submodules": [
         {
-          "id": "todays-appointments",
-          "title": "Today's Appointments",
-          "slug": "todays-appointments",
-          "description": "Appointment categories and filtering",
+          "id": "module-overview",
+          "title": "Module Overview",
+          "slug": "module-overview",
+          "description": "Today's appointments module introduction",
           "order": 1
+        },
+        {
+          "id": "appointment-categories",
+          "title": "Appointment Categories",
+          "slug": "appointment-categories",
+          "description": "All, AM, PM, APP, Call In, Auto Reminder",
+          "order": 2
+        },
+        {
+          "id": "appointment-filtering",
+          "title": "Appointment Filtering",
+          "slug": "appointment-filtering",
+          "description": "Filter appointments and monitor counts",
+          "order": 3
         }
       ]
     },
@@ -191,11 +303,74 @@
       "order": 7,
       "submodules": [
         {
-          "id": "vehicle-required-attention",
-          "title": "Vehicle Required Attention",
-          "slug": "vehicle-required-attention",
-          "description": "Service stage tracking and estimates",
+          "id": "module-overview",
+          "title": "Module Overview",
+          "slug": "module-overview",
+          "description": "Vehicle required attention module introduction",
           "order": 1
+        },
+        {
+          "id": "estimation-request",
+          "title": "Estimation Request",
+          "slug": "estimation-request",
+          "description": "Vehicles awaiting estimation request",
+          "order": 2
+        },
+        {
+          "id": "estimate",
+          "title": "Estimate",
+          "slug": "estimate",
+          "description": "Vehicles in estimate stage",
+          "order": 3
+        },
+        {
+          "id": "spares-pending",
+          "title": "Spares Pending",
+          "slug": "spares-pending",
+          "description": "Vehicles waiting for spare parts",
+          "order": 4
+        },
+        {
+          "id": "approval-pending",
+          "title": "Approval Pending",
+          "slug": "approval-pending",
+          "description": "Vehicles awaiting customer approval",
+          "order": 5
+        },
+        {
+          "id": "work-in-progress",
+          "title": "Work In Progress",
+          "slug": "work-in-progress",
+          "description": "Vehicles currently being serviced",
+          "order": 6
+        },
+        {
+          "id": "ready-for-delivery",
+          "title": "Ready For Delivery",
+          "slug": "ready-for-delivery",
+          "description": "Vehicles ready for customer pickup",
+          "order": 7
+        },
+        {
+          "id": "invoice",
+          "title": "Invoice",
+          "slug": "invoice",
+          "description": "Vehicles in invoicing stage",
+          "order": 8
+        },
+        {
+          "id": "delivered",
+          "title": "Delivered",
+          "slug": "delivered",
+          "description": "Completed and delivered vehicles",
+          "order": 9
+        },
+        {
+          "id": "vehicle-search-tracking",
+          "title": "Vehicle Search & Tracking",
+          "slug": "vehicle-search-tracking",
+          "description": "Search vehicles and track service progress",
+          "order": 10
         }
       ]
     },
@@ -208,11 +383,25 @@
       "order": 8,
       "submodules": [
         {
-          "id": "customer-payments-pending",
-          "title": "Customer Payments Pending",
-          "slug": "customer-payments-pending",
-          "description": "Track pending payments and invoices",
+          "id": "module-overview",
+          "title": "Module Overview",
+          "slug": "module-overview",
+          "description": "Customer payments pending module introduction",
           "order": 1
+        },
+        {
+          "id": "pending-payment-tracking",
+          "title": "Pending Payment Tracking",
+          "slug": "pending-payment-tracking",
+          "description": "Track pending customers and payments",
+          "order": 2
+        },
+        {
+          "id": "invoice-tracking",
+          "title": "Invoice Tracking",
+          "slug": "invoice-tracking",
+          "description": "Monitor pending invoices and payment counts",
+          "order": 3
         }
       ]
     },
@@ -225,10 +414,10 @@
       "order": 9,
       "submodules": [
         {
-          "id": "common-navigation",
-          "title": "Common Navigation Features",
-          "slug": "common-navigation",
-          "description": "Create RO access from every module",
+          "id": "create-ro-access",
+          "title": "Create RO Access",
+          "slug": "create-ro-access",
+          "description": "Access Create RO from every module",
           "order": 1
         },
         {

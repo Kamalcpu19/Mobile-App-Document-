@@ -50,3 +50,15 @@ export interface SearchResult {
   description?: string;
   href: string;
 }
+
+export interface DocSection {
+  sectionId: string;
+  moduleSlug: string;
+  submoduleSlug: string;
+  moduleTitle: string;
+  title: string;
+  description?: string;
+  lastUpdated?: string;
+  content: string;
+  href: string;
+}

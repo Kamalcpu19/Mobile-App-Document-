@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, BookOpen, Search, Sparkles } from "lucide-react";
-import { getModules, getNavigation, getDocHref } from "@/lib/docs";
+import { getModules, getNavigation } from "@/lib/docs";
+import { getDocHref } from "@/lib/doc-navigation";
 import { Navbar } from "@/components/layout/navbar";
 
 export default function HomePage() {

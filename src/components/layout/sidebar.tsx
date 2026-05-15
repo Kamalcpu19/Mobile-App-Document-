@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -18,8 +17,10 @@ import {
   User,
   type LucideIcon,
 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSidebar } from "@/components/providers/sidebar-provider";
+import { useDocsScroll } from "@/components/providers/docs-scroll-provider";
+import { getSectionId } from "@/lib/doc-navigation";
 import { cn } from "@/lib/utils";
 import type { Module } from "@/types/docs";
 
@@ -43,11 +44,27 @@ interface SidebarProps {
 export function Sidebar({ modules }: SidebarProps) {
   const pathname = usePathname();
   const { isOpen, close } = useSidebar();
+  const { activeSectionId, scrollToSection } = useDocsScroll();
+  const activeItemRef = useRef<HTMLButtonElement | null>(null);
+  const sidebarScrollRef = useRef<HTMLDivElement | null>(null);
+
+  const activeFromUrl = useMemo(() => {
+    const match = pathname.match(/^\/docs\/([^/]+)\/([^/]+)/);
+    if (!match) return null;
+    return getSectionId(match[1], match[2]);
+  }, [pathname]);
+
+  // Prefer scroll state over URL (URL updates are debounced during scroll)
+  const currentSectionId = activeSectionId || activeFromUrl;
 
   const activeModuleSlug = useMemo(() => {
+    if (currentSectionId) {
+      const idx = currentSectionId.indexOf("--");
+      if (idx !== -1) return currentSectionId.slice(0, idx);
+    }
     const match = pathname.match(/^\/docs\/([^/]+)/);
     return match?.[1] ?? null;
-  }, [pathname]);
+  }, [currentSectionId, pathname]);
 
   const [expanded, setExpanded] = useState<Set<string>>(() => new Set());
 
@@ -56,6 +73,15 @@ export function Sidebar({ modules }: SidebarProps) {
       setExpanded((prev) => new Set(prev).add(activeModuleSlug));
     }
   }, [activeModuleSlug]);
+
+  // Auto-scroll sidebar to keep active item visible
+  useEffect(() => {
+    if (!activeItemRef.current || !sidebarScrollRef.current) return;
+    activeItemRef.current.scrollIntoView({
+      block: "nearest",
+      behavior: "smooth",
+    });
+  }, [currentSectionId]);
 
   const toggleModule = (slug: string) => {
     setExpanded((prev) => {
@@ -66,24 +92,31 @@ export function Sidebar({ modules }: SidebarProps) {
     });
   };
 
+  const handleNavClick = useCallback(
+    (moduleSlug: string, submoduleSlug: string) => {
+      scrollToSection(moduleSlug, submoduleSlug, "smooth");
+      close();
+    },
+    [scrollToSection, close]
+  );
+
   const sidebarContent = (
-    <nav className="flex flex-col gap-1 p-3" aria-label="Documentation navigation">
+    <nav
+      className="flex flex-col gap-1 p-3 pt-4 lg:pt-3"
+      aria-label="Documentation navigation"
+    >
       {modules.map((mod) => {
         const Icon = iconMap[mod.icon ?? ""] ?? ClipboardList;
         const isExpanded = expanded.has(mod.slug);
         const isModuleActive = activeModuleSlug === mod.slug;
 
         return (
-          <motion.div
-            key={mod.id}
-            initial={false}
-            className="rounded-lg"
-          >
+          <motion.div key={mod.id} initial={false} className="rounded-lg">
             <button
               type="button"
               onClick={() => toggleModule(mod.slug)}
               className={cn(
-                "flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors",
+                "flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors duration-200",
                 isModuleActive
                   ? "bg-sidebar-accent text-primary"
                   : "text-sidebar-foreground hover:bg-sidebar-accent/60"
@@ -110,29 +143,32 @@ export function Sidebar({ modules }: SidebarProps) {
                 >
                   <ul className="ml-2 mt-0.5 space-y-0.5 border-l border-sidebar-border pl-3">
                     {mod.submodules.map((sub) => {
-                      const href = `/docs/${mod.slug}/${sub.slug}`;
-                      const isActive = pathname === href;
+                      const sectionId = getSectionId(mod.slug, sub.slug);
+                      const isActive = currentSectionId === sectionId;
 
                       return (
                         <li key={sub.id}>
-                          <Link
-                            href={href}
-                            onClick={close}
+                          <button
+                            type="button"
+                            ref={isActive ? activeItemRef : undefined}
+                            onClick={() => handleNavClick(mod.slug, sub.slug)}
                             className={cn(
-                              "group flex items-center gap-2 rounded-md px-2.5 py-1.5 text-sm transition-colors",
+                              "group flex w-full items-center gap-2 rounded-md px-2.5 py-1.5 text-left text-sm transition-all duration-200",
                               isActive
-                                ? "bg-primary/10 font-medium text-primary"
+                                ? "bg-primary/10 font-medium text-primary shadow-sm"
                                 : "text-muted-foreground hover:bg-sidebar-accent/50 hover:text-foreground"
                             )}
                           >
                             <ChevronRight
                               className={cn(
                                 "h-3 w-3 shrink-0 transition-opacity",
-                                isActive ? "opacity-100 text-primary" : "opacity-0 group-hover:opacity-50"
+                                isActive
+                                  ? "opacity-100 text-primary"
+                                  : "opacity-0 group-hover:opacity-50"
                               )}
                             />
                             <span className="truncate">{sub.title}</span>
-                          </Link>
+                          </button>
                         </li>
                       );
                     })}
@@ -148,14 +184,15 @@ export function Sidebar({ modules }: SidebarProps) {
 
   return (
     <>
-      {/* Desktop sidebar */}
-      <aside className="hidden lg:flex lg:w-72 lg:shrink-0 lg:flex-col lg:border-r lg:border-sidebar-border lg:bg-sidebar">
-        <div className="custom-scrollbar flex-1 overflow-y-auto">
+      <aside className="hidden h-full min-h-0 w-72 shrink-0 flex-col overflow-hidden border-r border-sidebar-border bg-sidebar lg:flex">
+        <div
+          ref={sidebarScrollRef}
+          className="custom-scrollbar min-h-0 flex-1 overflow-y-auto overscroll-contain"
+        >
           {sidebarContent}
         </div>
       </aside>
 
-      {/* Mobile overlay sidebar */}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -173,9 +210,12 @@ export function Sidebar({ modules }: SidebarProps) {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 28, stiffness: 320 }}
-              className="fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-sidebar-border bg-sidebar pt-14 lg:hidden"
+              className="fixed inset-y-0 left-0 z-50 flex w-72 flex-col overflow-hidden border-r border-sidebar-border bg-sidebar pt-[3.75rem] lg:hidden"
             >
-              <div className="custom-scrollbar flex-1 overflow-y-auto">
+              <div
+                ref={sidebarScrollRef}
+                className="custom-scrollbar min-h-0 flex-1 overflow-y-auto overscroll-contain"
+              >
                 {sidebarContent}
               </div>
             </motion.aside>

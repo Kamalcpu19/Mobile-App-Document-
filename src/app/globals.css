@@ -60,6 +60,11 @@
   body {
     @apply bg-background text-foreground antialiased;
   }
+
+  html:has(.docs-shell),
+  html:has(.docs-shell) body {
+    @apply h-full overflow-hidden;
+  }
 }
 
 /* Syntax highlighting (highlight.js github theme adapted) */
@@ -79,7 +84,16 @@ pre code.hljs {
   background: hsl(220 20% 98%) !important;
 }
 
-/* Custom scrollbar */
+/* Documentation markdown: headings must not look like hyperlinks */
+article.prose-docs-markdown :is(h1, h2, h3, h4, h5, h6) a {
+  @apply text-inherit no-underline decoration-transparent;
+  font-weight: inherit;
+  cursor: text;
+}
+
+article.prose-docs-markdown :is(h1, h2, h3, h4, h5, h6) a:hover {
+  @apply text-inherit no-underline;
+}
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
   height: 6px;

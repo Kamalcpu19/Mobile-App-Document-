@@ -4,11 +4,13 @@ import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { FileText, FolderOpen, Search } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useDocsScrollOptional } from "@/components/providers/docs-scroll-provider";
 import { cn } from "@/lib/utils";
 import type { SearchResult } from "@/types/docs";
 
 export function SearchDialog() {
   const router = useRouter();
+  const docsScroll = useDocsScrollOptional();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
@@ -51,6 +53,16 @@ export function SearchDialog() {
   const navigate = (href: string) => {
     setOpen(false);
     setQuery("");
+
+    const match = href.match(/^\/docs\/([^/]+)\/([^/]+)$/);
+    if (docsScroll && match) {
+      const [, moduleSlug, submoduleSlug] = match;
+      if (window.location.pathname.startsWith("/docs/")) {
+        docsScroll.scrollToSection(moduleSlug, submoduleSlug, "smooth");
+        return;
+      }
+    }
+
     router.push(href);
   };
 

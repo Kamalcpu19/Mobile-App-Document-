@@ -3,7 +3,6 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeHighlight from "rehype-highlight";
 import type { Components } from "react-markdown";
 import { CodeBlock } from "@/components/docs/code-block";
@@ -41,7 +40,10 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
       );
     },
     a({ href, children, ...props }) {
-      const isExternal = href?.startsWith("http");
+      const isExternal =
+        typeof href === "string" &&
+        (href.startsWith("http") || href.startsWith("//"));
+
       return (
         <a
           href={href}
@@ -52,6 +54,46 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
         >
           {children}
         </a>
+      );
+    },
+    h1({ children, ...props }) {
+      return (
+        <h1
+          className="my-8 scroll-mt-24 border-b border-border pb-4 text-balance text-3xl font-bold tracking-tight text-foreground first:mt-0 sm:text-4xl [&_a]:cursor-text [&_a]:font-inherit [&_a]:text-inherit [&_a]:no-underline hover:[&_a]:no-underline"
+          {...props}
+        >
+          {children}
+        </h1>
+      );
+    },
+    h2({ children, ...props }) {
+      return (
+        <h2
+          className="mt-10 scroll-mt-24 text-balance border-b border-border/60 pb-2 text-xl font-semibold tracking-tight text-foreground first:mt-0 sm:text-2xl [&_a]:cursor-text [&_a]:font-inherit [&_a]:text-inherit [&_a]:no-underline hover:[&_a]:no-underline"
+          {...props}
+        >
+          {children}
+        </h2>
+      );
+    },
+    h3({ children, ...props }) {
+      return (
+        <h3
+          className="mt-8 scroll-mt-24 text-lg font-semibold tracking-tight text-foreground sm:text-xl [&_a]:cursor-text [&_a]:font-inherit [&_a]:text-inherit [&_a]:no-underline hover:[&_a]:no-underline"
+          {...props}
+        >
+          {children}
+        </h3>
+      );
+    },
+    h4({ children, ...props }) {
+      return (
+        <h4
+          className="mt-6 scroll-mt-24 text-base font-semibold tracking-tight text-foreground sm:text-lg [&_a]:cursor-text [&_a]:font-inherit [&_a]:text-inherit [&_a]:no-underline hover:[&_a]:no-underline"
+          {...props}
+        >
+          {children}
+        </h4>
       );
     },
     table({ children }) {
@@ -85,20 +127,18 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
   return (
     <article
       className={cn(
-        "prose prose-slate max-w-none dark:prose-invert",
-        "prose-headings:scroll-mt-24 prose-headings:font-semibold prose-headings:tracking-tight",
+        "prose prose-slate max-w-none dark:prose-invert prose-docs-markdown",
+        "prose-p:leading-relaxed prose-strong:text-foreground",
         "prose-a:text-primary prose-code:before:content-none prose-code:after:content-none",
         "prose-pre:p-0 prose-pre:bg-transparent",
+        "prose-headings:text-foreground prose-headings:font-semibold",
+        "[&_*]:outline-none [&_summary]:cursor-pointer",
         className
       )}
     >
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[
-          rehypeSlug,
-          [rehypeAutolinkHeadings, { behavior: "wrap" }],
-          rehypeHighlight,
-        ]}
+        rehypePlugins={[rehypeSlug, rehypeHighlight]}
         components={components}
       >
         {content}
