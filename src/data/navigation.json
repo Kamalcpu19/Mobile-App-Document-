@@ -1,0 +1,338 @@
+{
+  "title": "Mobile App Feature Documentation",
+  "description": "Product Feature Documentation for Development, QA Testing, UAT, and Release Readiness",
+  "version": "1.0",
+  "modules": [
+    {
+      "id": "getting-started",
+      "title": "Getting Started",
+      "slug": "getting-started",
+      "icon": "book-open",
+      "description": "Product overview and target users",
+      "order": 1,
+      "submodules": [
+        {
+          "id": "overview",
+          "title": "Overview",
+          "slug": "overview",
+          "description": "Product name, objective, and target users",
+          "order": 1
+        }
+      ]
+    },
+    {
+      "id": "authentication",
+      "title": "Login & Authentication",
+      "slug": "authentication",
+      "icon": "log-in",
+      "description": "User sign in, account creation, and password recovery",
+      "order": 2,
+      "submodules": [
+        {
+          "id": "login-authentication",
+          "title": "Login & Authentication",
+          "slug": "login-authentication",
+          "description": "Sign in, forgot password, and create account flows",
+          "order": 1
+        }
+      ]
+    },
+    {
+      "id": "dashboard",
+      "title": "Landing Page / Dashboard",
+      "slug": "dashboard",
+      "icon": "layout-dashboard",
+      "description": "Main dashboard with reminders and quick actions",
+      "order": 3,
+      "submodules": [
+        {
+          "id": "landing-page-dashboard",
+          "title": "Landing Page Dashboard",
+          "slug": "landing-page-dashboard",
+          "description": "Customer messages, appointments, vehicles, and payments",
+          "order": 1
+        }
+      ]
+    },
+    {
+      "id": "create-ro",
+      "title": "Create RO (Repair Order)",
+      "slug": "create-ro",
+      "icon": "clipboard-list",
+      "description": "Repair order creation, inspection, and vehicle workflow",
+      "order": 4,
+      "submodules": [
+        {
+          "id": "create-ro-overview",
+          "title": "Create RO Overview",
+          "slug": "create-ro-overview",
+          "description": "Repair order creation workflow overview",
+          "order": 1
+        },
+        {
+          "id": "vehicle-number-detection",
+          "title": "Vehicle Number Detection",
+          "slug": "vehicle-number-detection",
+          "description": "Number plate capture and MMVY/Vahan API integration",
+          "order": 2
+        },
+        {
+          "id": "vehicle-image-capture",
+          "title": "Vehicle Image Capture",
+          "slug": "vehicle-image-capture",
+          "description": "Capture vehicle images and meter readings",
+          "order": 3
+        },
+        {
+          "id": "pre-inspection-checklist",
+          "title": "Pre-Inspection Checklist",
+          "slug": "pre-inspection-checklist",
+          "description": "Inspection categories and vehicle information",
+          "order": 4
+        },
+        {
+          "id": "pre-and-post-checks",
+          "title": "Pre and Post Checks",
+          "slug": "pre-and-post-checks",
+          "description": "Electrical wirings, wheel bearing inspections",
+          "order": 5
+        },
+        {
+          "id": "car-check-in",
+          "title": "Car Check In",
+          "slug": "car-check-in",
+          "description": "Hand brake, coolant, and tyre pressure checks",
+          "order": 6
+        },
+        {
+          "id": "check-in-category",
+          "title": "Check In Category",
+          "slug": "check-in-category",
+          "description": "Power steering, engine oil, steering checks",
+          "order": 7
+        },
+        {
+          "id": "vehicle-information",
+          "title": "Vehicle Information",
+          "slug": "vehicle-information",
+          "description": "Registration, make, model, VIN, fuel and odometer",
+          "order": 8
+        },
+        {
+          "id": "customer-information",
+          "title": "Customer Information",
+          "slug": "customer-information",
+          "description": "View and edit customer details",
+          "order": 9
+        },
+        {
+          "id": "complaints-voice-input",
+          "title": "Complaints & Voice Input",
+          "slug": "complaints-voice-input",
+          "description": "Add complaints manually or via voice",
+          "order": 10
+        },
+        {
+          "id": "service-history",
+          "title": "Service History",
+          "slug": "service-history",
+          "description": "Previous service records and timeline",
+          "order": 11
+        },
+        {
+          "id": "pre-inspection-completion",
+          "title": "Pre-Inspection Completion",
+          "slug": "pre-inspection-completion",
+          "description": "Complete inspection and create repair order",
+          "order": 12
+        }
+      ]
+    },
+    {
+      "id": "customer-messages",
+      "title": "Customer Messages",
+      "slug": "customer-messages",
+      "icon": "message-square",
+      "description": "Customer communications and AI complaint detection",
+      "order": 5,
+      "submodules": [
+        {
+          "id": "customer-messages",
+          "title": "Customer Messages Module",
+          "slug": "customer-messages",
+          "description": "Conversations, quick reply, and AI complaints",
+          "order": 1
+        }
+      ]
+    },
+    {
+      "id": "appointments",
+      "title": "Today's Appointments",
+      "slug": "appointments",
+      "icon": "calendar",
+      "description": "Daily appointment scheduling and filtering",
+      "order": 6,
+      "submodules": [
+        {
+          "id": "todays-appointments",
+          "title": "Today's Appointments",
+          "slug": "todays-appointments",
+          "description": "Appointment categories and filtering",
+          "order": 1
+        }
+      ]
+    },
+    {
+      "id": "vehicle-attention",
+      "title": "Vehicle Required Attention",
+      "slug": "vehicle-attention",
+      "icon": "car",
+      "description": "In-service vehicles and workflow stages",
+      "order": 7,
+      "submodules": [
+        {
+          "id": "vehicle-required-attention",
+          "title": "Vehicle Required Attention",
+          "slug": "vehicle-required-attention",
+          "description": "Service stage tracking and estimates",
+          "order": 1
+        }
+      ]
+    },
+    {
+      "id": "payments",
+      "title": "Customer Payments Pending",
+      "slug": "payments",
+      "icon": "credit-card",
+      "description": "Pending invoice payments and follow-ups",
+      "order": 8,
+      "submodules": [
+        {
+          "id": "customer-payments-pending",
+          "title": "Customer Payments Pending",
+          "slug": "customer-payments-pending",
+          "description": "Track pending payments and invoices",
+          "order": 1
+        }
+      ]
+    },
+    {
+      "id": "navigation",
+      "title": "Navigation",
+      "slug": "navigation",
+      "icon": "route",
+      "description": "Common navigation and application flow",
+      "order": 9,
+      "submodules": [
+        {
+          "id": "common-navigation",
+          "title": "Common Navigation Features",
+          "slug": "common-navigation",
+          "description": "Create RO access from every module",
+          "order": 1
+        },
+        {
+          "id": "application-navigation-flow",
+          "title": "Application Navigation Flow",
+          "slug": "application-navigation-flow",
+          "description": "End-to-end application workflow",
+          "order": 2
+        }
+      ]
+    },
+    {
+      "id": "profile-access",
+      "title": "Profile Access",
+      "slug": "profile-access",
+      "icon": "user",
+      "description": "User profile, workshop settings, and account",
+      "order": 10,
+      "submodules": [
+        {
+          "id": "profile-access-overview",
+          "title": "Profile Access Overview",
+          "slug": "profile-access-overview",
+          "description": "Profile module sections and access",
+          "order": 1
+        },
+        {
+          "id": "user-profile-information",
+          "title": "User Profile Information",
+          "slug": "user-profile-information",
+          "description": "Logged-in user and workshop role details",
+          "order": 2
+        },
+        {
+          "id": "workshop-information",
+          "title": "Workshop Information",
+          "slug": "workshop-information",
+          "description": "Workshop name, category, and GST status",
+          "order": 3
+        },
+        {
+          "id": "contact-location-details",
+          "title": "Contact & Location Details",
+          "slug": "contact-location-details",
+          "description": "Phone, email, owner, and address",
+          "order": 4
+        },
+        {
+          "id": "plan-subscription",
+          "title": "Plan & Subscription",
+          "slug": "plan-subscription",
+          "description": "Subscription plan and package validity",
+          "order": 5
+        },
+        {
+          "id": "enabled-capabilities",
+          "title": "Enabled Capabilities",
+          "slug": "enabled-capabilities",
+          "description": "Package-enabled features and access",
+          "order": 6
+        },
+        {
+          "id": "package-features",
+          "title": "Package Features",
+          "slug": "package-features",
+          "description": "Counter sale, inventory, and mobile version",
+          "order": 7
+        },
+        {
+          "id": "privacy-data-settings",
+          "title": "Privacy & Data Settings",
+          "slug": "privacy-data-settings",
+          "description": "Privacy policy and data processing",
+          "order": 8
+        },
+        {
+          "id": "app-language-settings",
+          "title": "App Language Settings",
+          "slug": "app-language-settings",
+          "description": "Change application language",
+          "order": 9
+        },
+        {
+          "id": "workspace-settings",
+          "title": "Workspace Settings",
+          "slug": "workspace-settings",
+          "description": "Invoice templates and automation",
+          "order": 10
+        },
+        {
+          "id": "app-version-information",
+          "title": "App Version Information",
+          "slug": "app-version-information",
+          "description": "Installed app version and build info",
+          "order": 11
+        },
+        {
+          "id": "sign-out",
+          "title": "Sign Out",
+          "slug": "sign-out",
+          "description": "Secure logout from the application",
+          "order": 12
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+---
+title: "Enabled Capabilities"
+description: "Displays features enabled based on the workshop package and user access profile."
+lastUpdated: May 15, 2026
+---
+
+# Enabled Capabilities
+
+### Description
+
+
+
+- Displays features enabled based on the workshop package and user access profile.
+
+### Available Capabilities
+
+
+
+- Appointments
+
+- Inventory
+
+- Accessories
+
+- Customer Detail Capture
+
+- Additional Package Features
+
+### Expected Result
+
+
+
+- Enabled capabilities should display dynamically based on subscription plan.
