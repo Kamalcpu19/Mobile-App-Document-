@@ -12,7 +12,6 @@ lastUpdated: May 17, 2026
 | --- | --- |
 | Product Name | Mobile Application |
 | Version | v1.0 |
-| Prepared By | Kamal Dudekula |
 | Document Type | Functional Feature Documentation |
 | Purpose | Product Feature Documentation for Development, QA Testing, UAT, and Release Readiness |
 
