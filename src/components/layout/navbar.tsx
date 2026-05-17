@@ -15,7 +15,7 @@ export function Navbar() {
   const { toggle, isOpen, close } = useSidebar();
   const [mounted, setMounted] = useState(false);
 
-  const isDocsRoute = pathname.startsWith("/docs");
+  const isDocsRoute = pathname?.startsWith("/docs") ?? false;
 
   useEffect(() => setMounted(true), []);
 

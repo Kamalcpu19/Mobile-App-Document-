@@ -33,7 +33,7 @@ export function TableOfContents({
       },
       {
         root: scrollRoot,
-        rootMargin: "-5rem 0px -70% 0px",
+        rootMargin: "-80px 0px -70% 0px",
         threshold: 0,
       }
     );
