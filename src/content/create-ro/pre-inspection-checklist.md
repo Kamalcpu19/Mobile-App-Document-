@@ -1,7 +1,7 @@
 ---
 title: "Pre-Inspection Checklist"
 description: "After clicking Proceed RO, the application opens the Pre-Inspection Checklist page."
-lastUpdated: May 15, 2026
+lastUpdated: May 17, 2026
 ---
 
 # Pre-Inspection Checklist
@@ -30,8 +30,78 @@ lastUpdated: May 15, 2026
 
 
 
-- Pre and Post Checks
+#### A. Pre and Post Checks
 
-- Car Check In
+### Inspection Items
 
-- Check In Category
+
+
+#### B. Car Check-In
+
+
+
+- Electrical wirings ABS-cables check
+
+- Wheel bearing
+
+### Inspection Items
+
+
+
+#### C. Check-In Category
+
+
+
+- Hand brake lever adjustment
+
+- Coolant system and coolant hoses check
+
+- Tyre air pressure
+
+### Inspection Items
+
+
+
+- Power steering fluid check & engine oil change service
+
+- Steering vibration and noises
+
+### Inspection Features
+
+
+
+**Each inspection item supports:**
+
+- Image Upload
+
+- Comment Addition
+
+### Swipe Actions
+
+### Swipe Actions
+
+
+
+- Swipe Right
+
+**Mark's inspection item as:**
+
+- OK
+
+- Swipe Left
+
+**Mark's inspection item as:**
+
+- Action Required
+
+### Inspection Status Types
+
+
+
+- OK
+
+- Action Required
+
+- Urgent
+
+- Concern

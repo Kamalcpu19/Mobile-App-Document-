@@ -1,7 +1,7 @@
 ---
 title: "Privacy & Data Settings"
 description: "Displays privacy policy and data processing information."
-lastUpdated: May 15, 2026
+lastUpdated: May 17, 2026
 ---
 
 # Privacy & Data Settings
@@ -24,4 +24,4 @@ lastUpdated: May 15, 2026
 
 
 
-- Privacy status should display correctly.
+- Privacy status should display correctly

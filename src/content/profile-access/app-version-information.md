@@ -1,7 +1,7 @@
 ---
 title: "App Version Information"
-description: "Displays the currently installed application version."
-lastUpdated: May 15, 2026
+description: "Displays currently installed application version."
+lastUpdated: May 17, 2026
 ---
 
 # App Version Information
@@ -10,7 +10,7 @@ lastUpdated: May 15, 2026
 
 
 
-- Displays the currently installed application version.
+- Displays currently installed application version.
 
 ### Available Information
 
@@ -24,4 +24,4 @@ lastUpdated: May 15, 2026
 
 
 
-- Current app version should display correctly.
+- Current app version should display correctly

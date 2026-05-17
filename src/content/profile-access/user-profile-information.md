@@ -1,7 +1,7 @@
 ---
 title: "User Profile Information"
 description: "Displays logged-in user information and workshop role details."
-lastUpdated: May 15, 2026
+lastUpdated: May 17, 2026
 ---
 
 # User Profile Information
@@ -38,6 +38,6 @@ lastUpdated: May 15, 2026
 
 
 
-- User profile information should display correctly.
+- User profile information should display correctly
 
-- Account status should update dynamically.
+- Account status should update dynamically

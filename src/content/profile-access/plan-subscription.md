@@ -1,7 +1,7 @@
 ---
 title: "Plan & Subscription"
 description: "Displays current workshop subscription plan details and package validity information."
-lastUpdated: May 15, 2026
+lastUpdated: May 17, 2026
 ---
 
 # Plan & Subscription
@@ -24,7 +24,9 @@ lastUpdated: May 15, 2026
 
 - Package Upgrade Status
 
-- Features
+### Features
+
+
 
 - View Subscription Information
 
@@ -34,4 +36,4 @@ lastUpdated: May 15, 2026
 
 
 
-- Subscription plan and validity details should display correctly.
+- Subscription plan and validity details should display correctly

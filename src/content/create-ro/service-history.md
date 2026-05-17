@@ -1,7 +1,7 @@
 ---
 title: "Service History"
 description: "Displays previous vehicle service history related to the selected vehicle."
-lastUpdated: May 15, 2026
+lastUpdated: May 17, 2026
 ---
 
 # Service History
@@ -12,7 +12,9 @@ lastUpdated: May 15, 2026
 
 - Displays previous vehicle service history related to the selected vehicle.
 
-- Features
+### Features
+
+
 
 - View Previous Service Records
 
@@ -22,4 +24,4 @@ lastUpdated: May 15, 2026
 
 
 
-- Previous service history should display successfully.
+- Previous service history should display successfully

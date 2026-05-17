@@ -1,7 +1,7 @@
 ---
 title: "Enabled Capabilities"
-description: "Displays features enabled based on the workshop package and user access profile."
-lastUpdated: May 15, 2026
+description: "Displays features enabled based on workshop package and user access profile."
+lastUpdated: May 17, 2026
 ---
 
 # Enabled Capabilities
@@ -10,7 +10,7 @@ lastUpdated: May 15, 2026
 
 
 
-- Displays features enabled based on the workshop package and user access profile.
+- Displays features enabled based on workshop package and user access profile.
 
 ### Available Capabilities
 
@@ -30,4 +30,4 @@ lastUpdated: May 15, 2026
 
 
 
-- Enabled capabilities should display dynamically based on subscription plan.
+- Enabled capabilities should display dynamically based on subscription plan

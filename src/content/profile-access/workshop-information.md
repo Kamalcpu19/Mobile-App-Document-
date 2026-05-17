@@ -1,7 +1,7 @@
 ---
 title: "Workshop Information"
 description: "Displays workshop/business-related information."
-lastUpdated: May 15, 2026
+lastUpdated: May 17, 2026
 ---
 
 # Workshop Information
@@ -26,4 +26,4 @@ lastUpdated: May 15, 2026
 
 
 
-- Workshop details should display correctly.
+- Workshop details should display correctly

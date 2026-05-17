@@ -1,7 +1,7 @@
 ---
 title: "Contact & Location Details"
 description: "Displays workshop communication and address information."
-lastUpdated: May 15, 2026
+lastUpdated: May 17, 2026
 ---
 
 # Contact & Location Details
@@ -26,7 +26,9 @@ lastUpdated: May 15, 2026
 
 - Workshop Address
 
-- Features
+### Features
+
+
 
 - View Contact Details
 
@@ -36,4 +38,4 @@ lastUpdated: May 15, 2026
 
 
 
-- Contact and location details should display correctly.
+- Contact and location details should display correctly

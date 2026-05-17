@@ -39,7 +39,7 @@ export default function HomePage() {
               </Link>
             )}
             <Link
-              href={getDocHref("getting-started", "overview")}
+              href={getDocHref("introduction", "overview")}
               className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-5 py-2.5 text-sm font-medium transition-colors hover:bg-accent"
             >
               <BookOpen className="h-4 w-4" />

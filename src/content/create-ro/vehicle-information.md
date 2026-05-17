@@ -1,7 +1,7 @@
 ---
 title: "Vehicle Information"
-description: "Available Details"
-lastUpdated: May 15, 2026
+description: "Registration Number"
+lastUpdated: May 17, 2026
 ---
 
 # Vehicle Information
@@ -32,7 +32,9 @@ lastUpdated: May 15, 2026
 
 - Vehicle Images
 
-- Features
+### Features
+
+
 
 - View Vehicle Information
 
@@ -44,8 +46,8 @@ lastUpdated: May 15, 2026
 
 
 
-- Vehicle details should display correctly.
+- Vehicle details should display correctly
 
-- Captured images should display successfully.
+- Captured images should display successfully
 
-- Fuel and odometer details should auto-update correctly.
+- Fuel and odometer details should auto-update correctly

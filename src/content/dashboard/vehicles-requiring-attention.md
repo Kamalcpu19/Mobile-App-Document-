@@ -1,19 +1,19 @@
 ---
 title: "Vehicles Requiring Attention"
-description: "Dashboard card showing vehicles that require service attention or follow-up"
-lastUpdated: May 15, 2026
+description: "Displays vehicles currently under service or requiring follow-up actions."
+lastUpdated: May 17, 2026
 ---
 
 # Vehicles Requiring Attention
 
 ### Description
 
-Displays the count of vehicles that require service attention or follow-up on the landing page dashboard.
+
+
+- Displays vehicles currently under service or requiring follow-up actions.
 
 ### Expected Result
 
-Users should be able to monitor pending vehicle activities directly from the dashboard.
 
-### Related Module
 
-For full vehicle tracking and service stages, see **Vehicle Required Attention** module in the sidebar.
+- Users should monitor pending vehicle activities effectively.

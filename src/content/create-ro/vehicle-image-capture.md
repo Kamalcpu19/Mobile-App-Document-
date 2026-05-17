@@ -1,7 +1,7 @@
 ---
 title: "Vehicle Image Capture"
 description: "After vehicle number verification, the application opens the Vehicle Image Capture screen."
-lastUpdated: May 15, 2026
+lastUpdated: May 17, 2026
 ---
 
 # Vehicle Image Capture
@@ -12,7 +12,7 @@ lastUpdated: May 15, 2026
 
 - After vehicle number verification, the application opens the Vehicle Image Capture screen.
 
-- Users can capture vehicle images from different angles and capture meter readings.
+- Users can capture vehicle images from different angles along with meter readings.
 
 ### Required Images
 
@@ -56,34 +56,30 @@ lastUpdated: May 15, 2026
 
 - Odometer Image
 
-- and updates the Vehicle Information section.
+- and updates the Vehicle Information section automatically.
 
-### Flow
+### Workflow
 
 
 
-- User selects image category.
+1. User selects image category.
 
-- Camera screen opens.
+2. Camera screen opens.
 
-- User captures image.
+3. User captures an image.
 
-- Image is mapped to selected category.
+4. Image is mapped to selected category.
 
-- User repeats process for required images.
+5. User repeats the process for the required images.
 
-**User can:**
-
-- Click Skip
-
-- Click Proceed RO
+6. The user can click Skip or Proceed RO.
 
 ### Expected Result
 
 
 
-- Images should save successfully.
+- Images should save successfully
 
-- Fuel level should auto-update correctly.
+- Fuel level should auto-update correctly
 
-- Odometer reading should auto-update correctly.
+- Odometer reading should auto-update correctly

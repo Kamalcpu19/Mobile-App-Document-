@@ -1,7 +1,7 @@
 ---
 title: "Customer Information"
-description: "Available Details"
-lastUpdated: May 15, 2026
+description: "Customer Name"
+lastUpdated: May 17, 2026
 ---
 
 # Customer Information
@@ -16,7 +16,9 @@ lastUpdated: May 15, 2026
 
 - Email Address
 
-- Features
+### Features
+
+
 
 - View Customer Information
 
@@ -26,6 +28,6 @@ lastUpdated: May 15, 2026
 
 
 
-- Customer details should display correctly.
+- Customer details should display correctly
 
-- User should be able to edit customer details successfully.
+- The user should edit the customer details successfully

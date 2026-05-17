@@ -1,7 +1,7 @@
 ---
 title: "Workspace Settings"
 description: "Displays workshop-level configuration and automation information managed by the workshop administrator."
-lastUpdated: May 15, 2026
+lastUpdated: May 17, 2026
 ---
 
 # Workspace Settings
@@ -26,4 +26,4 @@ lastUpdated: May 15, 2026
 
 
 
-- Workspace settings information should display correctly.
+- Workspace settings information should display correctly

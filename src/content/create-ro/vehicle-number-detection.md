@@ -1,7 +1,7 @@
 ---
 title: "Vehicle Number Detection"
 description: "The RO creation process starts with vehicle number detection."
-lastUpdated: May 15, 2026
+lastUpdated: May 17, 2026
 ---
 
 # Vehicle Number Detection
@@ -14,13 +14,11 @@ lastUpdated: May 15, 2026
 
 **Users can:**
 
-- Capture vehicle number plate image
+- Capture the vehicle number plate image
 
 - Enter vehicle number manually
 
 **The application integrates with:**
-
-- MMVY
 
 - Vahan API
 
@@ -44,32 +42,32 @@ lastUpdated: May 15, 2026
 
 - Close Button
 
-### Flow
+### Workflow
 
 
 
-- User clicks on Create RO.
+1. User clicks on Create RO.
 
-- Camera screen opens.
+2. Camera screen opens.
 
-- User captures vehicle number plate image.
+3. User captures vehicle number plate image.
 
-- System detects the vehicle registration number automatically.
+4. The system detects the vehicle registration number automatically.
 
-- Vehicle number is populated in the input field.
+5. Vehicle number is populated in input field.
 
-- User can manually edit or enter vehicle number.
+6. The user can manually enter the vehicle number.
 
-- Vehicle details are fetched using MMVY/Vahan APIs.
+7. Vehicle details are fetched using MMVY/Vahan APIs.
 
-- User clicks on Next.
+8. User clicks on Next.
 
 ### Expected Result
 
 
 
-- Vehicle number should detect successfully.
+- The vehicle number should be detected successfully
 
-- Vehicle details should fetch successfully.
+- Vehicle details should fetch successfully
 
-- Manual entry should work correctly.
+- Manual entry should work correctly

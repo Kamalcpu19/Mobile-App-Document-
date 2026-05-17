@@ -13,6 +13,7 @@ import {
   LayoutDashboard,
   LogIn,
   MessageSquare,
+  GitBranch,
   Route,
   User,
   type LucideIcon,
@@ -34,6 +35,7 @@ const iconMap: Record<string, LucideIcon> = {
   car: Car,
   "credit-card": CreditCard,
   route: Route,
+  "git-branch": GitBranch,
   user: User,
 };
 

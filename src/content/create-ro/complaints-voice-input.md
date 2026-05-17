@@ -1,7 +1,7 @@
 ---
 title: "Complaints & Voice Input"
 description: "Users can add customer complaints manually or using voice input."
-lastUpdated: May 15, 2026
+lastUpdated: May 17, 2026
 ---
 
 # Complaints & Voice Input
@@ -12,7 +12,11 @@ lastUpdated: May 15, 2026
 
 - Users can add customer complaints manually or using voice input.
 
-- Features
+- Complaint appears in the Pre-Inspection Checklist.
+
+### Features
+
+
 
 - Add Complaint
 
@@ -20,22 +24,22 @@ lastUpdated: May 15, 2026
 
 - Complaint Tracking
 
-### Flow
+### Workflow
 
 
 
-- User enters complaint manually or through voice input.
+1. User enters the complaint manually or through voice input.
 
-- User clicks Add Complaint.
+2. User clicks Add Complaint.
 
-- Complaint is saved successfully.
+3. The complaint is saved successfully.
 
-- Complaint appears in the Pre-Inspection Checklist.
+4. Complaint appears in Pre-Inspection Checklist.
 
 ### Expected Result
 
 
 
-- Complaints should save successfully.
+- Complaints should save successfully
 
-- Voice input should work correctly.
+- Voice input should work correctly

@@ -1,22 +1,56 @@
-Mobile App Feature Documentation
+Mobile Application Feature Documentation
 
-Versionv1.0
+Document Information
 
-Prepared ByKamal Dudekula
+Field
 
-PurposeProduct Feature Documentation for Development, QA Testing, UAT, and Release Readiness.
-
-1. Overview
+Details
 
 Product Name
 
 Mobile Application
 
-Objective
+Version
 
-The mobile application is designed to help garage/workshop users manage daily workshop operations through mobile devices with simplified workflows and quick access to operational activities.
+v1.0
 
-Target Users
+Prepared By
+
+Kamal Dudekula
+
+Document Type
+
+Functional Feature Documentation
+
+Purpose
+
+Product Feature Documentation for Development, QA Testing, UAT, and Release Readiness
+
+1. Introduction
+
+1.1 Overview
+
+The Mobile Application is designed to simplify and digitize workshop and garage operations through a mobile-first platform. The application enables workshop staff to efficiently manage repair orders, inspections, customer communication, appointments, service workflow tracking, and payment monitoring.
+
+The application focuses on improving operational efficiency, reducing manual work, and providing quick access to workshop activities directly from mobile devices.
+
+1.2 Objectives
+
+Simplify daily workshop operations
+
+Digitize repair order creation process
+
+Improve customer communication management
+
+Enable faster vehicle inspection workflows
+
+Improve service workflow tracking
+
+Provide real-time operational visibility
+
+Reduce manual data entry using automation and AI features
+
+1.3 Target Users
 
 Garage Owners
 
@@ -26,15 +60,13 @@ Technicians
 
 Billing Staff
 
-2. Login &amp; Authentication
+2. Login &amp; Authentication Module
 
-Feature: User Sign In
+2.1 Feature Overview
 
-Description
+The Login &amp; Authentication module allows registered users to securely access the application using username and password credentials.
 
-The Login page allows registered users to securely access the mobile application using their username and password credentials.
-
-Available Options
+2.2 Available Features
 
 Username Input Field
 
@@ -46,7 +78,9 @@ Forgot Password Option
 
 Create Account Option
 
-Login Flow
+Secure Session Authentication
+
+2.3 Login Flow
 
 User opens the mobile application.
 
@@ -56,69 +90,63 @@ User enters password.
 
 User clicks on the Sign In button.
 
-System validates the credentials.
+System validates credentials.
 
-On successful authentication, the user is redirected to the Dashboard/Home screen.
+On successful authentication, user is redirected to Dashboard/Home screen.
 
-Forgot Password Flow
+2.4 Forgot Password Flow
 
 User clicks on Forgot Password.
 
-System redirects the user to password recovery screen.
+System redirects user to password recovery screen.
 
-User enters registered mobile number/email.
+User enters registered mobile number or email address.
 
-Verification process is completed through OTP or registered verification method.
+OTP verification process is completed.
 
-User creates a new password.
+User creates new password.
 
-User logs in using the updated password.
+User logs in using updated password.
 
-Create Account Feature
-
-The application provides a Create Account option for new users.
-
-Create Account Flow
+2.5 Create Account Flow
 
 User clicks on Create Account.
 
 User enters required registration details.
 
-User submits the registration form.
+User submits registration form.
 
 System validates entered details.
 
 Account is created successfully.
 
-User can log in using newly created credentials.
+User logs in using newly created credentials.
 
-Validations
+2.6 Validations
 
-Username field should not be empty.
+Username field should not be empty
 
-Password field should not be empty.
+Password field should not be empty
 
-Invalid credentials should display an error message.
+Invalid credentials should display error message
 
-Password should meet defined security criteria.
+Password should satisfy security policy requirements
 
-Expected Result
+2.7 Expected Result
 
-Registered users should be able to log in successfully.
+Registered users should log in successfully
 
-New users should be able to create an account successfully.
+New users should create accounts successfully
 
-Users should be able to reset forgotten passwords successfully.
+Password recovery should complete securely
 
-3. Landing Page / Dashboard
+3. Dashboard / Landing Page Module
 
-Feature: Landing Page Dashboard
+3.1 Overview
 
-Description
+The Dashboard acts as the main operational landing page after successful login. Users can quickly access reminders, pending activities, service operations, and workflow shortcuts.
 
-The Landing Page acts as the main dashboard of the mobile application. After successful login, users are redirected to this screen where they can view important reminders, pending activities, and quick actions related to workshop operations.
-
-Available Sections
+3.2 Dashboard Sections
 
 Customer Messages Reminder
 
@@ -128,23 +156,23 @@ Vehicle Attention Reminder
 
 Pending Payments Reminder
 
-Create RO (Repair Order) Quick Action
+Create RO Quick Access
 
 Profile Icon Access
 
-Dashboard Information Cards
+3.3 Dashboard Information Cards
 
-1. Customer Messages
+3.3.1 Customer Messages
 
 Description
 
-Displays the number of customer messages awaiting response.
+Displays the number of customer conversations awaiting response.
 
 Expected Result
 
-Users should be able to identify pending customer communications quickly.
+Users should identify pending customer communications quickly.
 
-2. Appointments Scheduled
+3.3.2 Appointments Scheduled
 
 Description
 
@@ -152,71 +180,69 @@ Displays the total number of appointments scheduled for the current day.
 
 Expected Result
 
-Users should be able to track daily appointment schedules.
+Users should track daily appointment schedules efficiently.
 
-3. Vehicles Requiring Attention
+3.3.3 Vehicles Requiring Attention
 
 Description
 
-Displays the count of vehicles that require service attention or follow-up.
+Displays vehicles currently under service or requiring follow-up actions.
 
 Expected Result
 
-Users should be able to monitor pending vehicle activities.
+Users should monitor pending vehicle activities effectively.
 
-4. Customer Payments Pending
+3.3.4 Customer Payments Pending
 
 Description
 
-Displays the total pending customer payments.
+Displays pending invoice payments and customer dues.
 
 Expected Result
 
-Users should be able to identify pending payment collections.
+Users should identify pending payment collections quickly.
 
-4. Create RO (Repair Order)
+4. Create RO (Repair Order) Module
 
-Description
+4.1 Overview
 
-A quick action button is provided across all modules to create a new Repair Order (RO).
+The Create RO module allows users to create and manage Repair Orders through a guided workflow.
 
-The Create RO module allows users to:
+The module enables users to:
 
 Capture vehicle details
 
-Perform inspection activities
+Perform vehicle inspections
 
 Add customer complaints
 
-Create Repair Orders
+Generate Repair Orders
 
-Track service workflow
+Track service workflows
 
-Create RO Flow
+4.2 Create RO Workflow
 
-Vehicle Number Detection→ Vehicle Image Capture→ Pre-Inspection Checklist→ RO Creation Complete
+Vehicle Number Detection→ Vehicle Image Capture→ Pre-Inspection Checklist→ RO Creation Completion
 
-4.1 Vehicle Number Detection
+4.3 Vehicle Number Detection
 
-Description
+4.3.1 Description
 
 The RO creation process starts with vehicle number detection.
 
 Users can:
 
-Capture vehicle number plate image
+Capture the vehicle number plate image
 
 Enter vehicle number manually
 
 The application integrates with:
 
-MMVY
-
 Vahan API
 
 to fetch vehicle details automatically.
 
-Available Features
+4.3.2 Available Features
 
 Number Plate Camera Capture
 
@@ -232,7 +258,7 @@ Back Button
 
 Close Button
 
-Flow
+4.3.3 Workflow
 
 User clicks on Create RO.
 
@@ -240,33 +266,33 @@ Camera screen opens.
 
 User captures vehicle number plate image.
 
-System detects the vehicle registration number automatically.
+The system detects the vehicle registration number automatically.
 
-Vehicle number is populated in the input field.
+Vehicle number is populated in input field.
 
-User can manually edit or enter vehicle number.
+The user can manually enter the vehicle number.
 
 Vehicle details are fetched using MMVY/Vahan APIs.
 
 User clicks on Next.
 
-Expected Result
+4.3.4 Expected Result
 
-Vehicle number should detect successfully.
+The vehicle number should be detected successfully
 
-Vehicle details should fetch successfully.
+Vehicle details should fetch successfully
 
-Manual entry should work correctly.
+Manual entry should work correctly
 
-4.2 Vehicle Image Capture
+4.4 Vehicle Image Capture
 
-Description
+4.4.1 Description
 
 After vehicle number verification, the application opens the Vehicle Image Capture screen.
 
-Users can capture vehicle images from different angles and capture meter readings.
+Users can capture vehicle images from different angles along with meter readings.
 
-Required Images
+4.4.2 Required Images
 
 Front Image
 
@@ -280,7 +306,7 @@ Fuel Meter Image
 
 Odometer Image
 
-Available Actions
+4.4.3 Available Actions
 
 Capture Image
 
@@ -288,7 +314,7 @@ Skip
 
 Proceed RO
 
-Auto Data Extraction
+4.4.4 Auto Data Extraction
 
 The application automatically extracts:
 
@@ -302,37 +328,33 @@ Fuel Meter Image
 
 Odometer Image
 
-and updates the Vehicle Information section.
+and updates the Vehicle Information section automatically.
 
-Flow
+4.4.5 Workflow
 
 User selects image category.
 
 Camera screen opens.
 
-User captures image.
+User captures an image.
 
 Image is mapped to selected category.
 
-User repeats process for required images.
+User repeats the process for the required images.
 
-User can:
+The user can click Skip or Proceed RO.
 
-Click Skip
+4.4.6 Expected Result
 
-Click Proceed RO
+Images should save successfully
 
-Expected Result
+Fuel level should auto-update correctly
 
-Images should save successfully.
+Odometer reading should auto-update correctly
 
-Fuel level should auto-update correctly.
+4.5 Pre-Inspection Checklist
 
-Odometer reading should auto-update correctly.
-
-4.3 Pre-Inspection Checklist
-
-Description
+4.5.1 Description
 
 After clicking Proceed RO, the application opens the Pre-Inspection Checklist page.
 
@@ -348,15 +370,9 @@ Complaints
 
 Service History
 
-Inspection Categories
+4.5.2 Inspection Categories
 
-Pre and Post Checks
-
-Car Check In
-
-Check In Category
-
-4.3.1 Pre and Post Checks
+A. Pre and Post Checks
 
 Inspection Items
 
@@ -364,7 +380,7 @@ Electrical wirings ABS-cables check
 
 Wheel bearing
 
-4.3.2 Car Check In
+B. Car Check-In
 
 Inspection Items
 
@@ -374,7 +390,7 @@ Coolant system and coolant hoses check
 
 Tyre air pressure
 
-4.3.3 Check In Category
+C. Check-In Category
 
 Inspection Items
 
@@ -382,7 +398,7 @@ Power steering fluid check &amp; engine oil change service
 
 Steering vibration and noises
 
-Inspection Features
+4.5.3 Inspection Features
 
 Each inspection item supports:
 
@@ -392,21 +408,21 @@ Comment Addition
 
 Swipe Actions
 
-Swipe Actions
+4.5.4 Swipe Actions
 
 Swipe Right
 
-Marks item as:
+Mark's inspection item as:
 
 OK
 
 Swipe Left
 
-Marks item as:
+Mark's inspection item as:
 
 Action Required
 
-Inspection Status Types
+4.5.5 Inspection Status Types
 
 OK
 
@@ -416,9 +432,9 @@ Urgent
 
 Concern
 
-4.4 Vehicle Information
+4.6 Vehicle Information
 
-Available Details
+4.6.1 Available Details
 
 Registration Number
 
@@ -442,7 +458,7 @@ Odometer Reading
 
 Vehicle Images
 
-Features
+4.6.2 Features
 
 View Vehicle Information
 
@@ -450,17 +466,17 @@ Edit Vehicle Information
 
 View Captured Vehicle Images
 
-Expected Result
+4.6.3 Expected Result
 
-Vehicle details should display correctly.
+Vehicle details should display correctly
 
-Captured images should display successfully.
+Captured images should display successfully
 
-Fuel and odometer details should auto-update correctly.
+Fuel and odometer details should auto-update correctly
 
-4.5 Customer Information
+4.7 Customer Information
 
-Available Details
+4.7.1 Available Details
 
 Customer Name
 
@@ -468,25 +484,27 @@ Phone Number
 
 Email Address
 
-Features
+4.7.2 Features
 
 View Customer Information
 
 Edit Customer Information
 
-Expected Result
+4.7.3 Expected Result
 
-Customer details should display correctly.
+Customer details should display correctly
 
-User should be able to edit customer details successfully.
+The user should edit the customer details successfully
 
-4.6 Complaints &amp; Voice Input
+4.8 Complaints &amp; Voice Input
 
-Description
+4.8.1 Description
 
 Users can add customer complaints manually or using voice input.
 
-Features
+Complaint appears in the Pre-Inspection Checklist.
+
+4.8.2 Features
 
 Add Complaint
 
@@ -494,65 +512,65 @@ Voice Complaint Input
 
 Complaint Tracking
 
-Flow
+4.8.3 Workflow
 
-User enters complaint manually or through voice input.
+User enters the complaint manually or through voice input.
 
 User clicks Add Complaint.
 
-Complaint is saved successfully.
+The complaint is saved successfully.
 
-Complaint appears in the Pre-Inspection Checklist.
+Complaint appears in Pre-Inspection Checklist.
 
-Expected Result
+4.8.4 Expected Result
 
-Complaints should save successfully.
+Complaints should save successfully
 
-Voice input should work correctly.
+Voice input should work correctly
 
-4.7 Service History
+4.9 Service History
 
-Description
+4.9.1 Description
 
 Displays previous vehicle service history related to the selected vehicle.
 
-Features
+4.9.2 Features
 
 View Previous Service Records
 
 Service Timeline Tracking
 
-Expected Result
+4.9.3 Expected Result
 
-Previous service history should display successfully.
+Previous service history should display successfully
 
-4.8 Pre-Inspection Completion
+4.10 Pre-Inspection Completion
 
-Flow
+4.10.1 Workflow
 
 User completes inspection activities.
 
 User clicks on Pre-Inspection Done.
 
-Repair Order is created successfully.
+The Repair Order was created successfully.
 
 Create RO process closes automatically.
 
-Vehicle moves to Vehicle Required Attention section.
+Vehicle moves to the Vehicle Required Attention section.
 
-Expected Result
+4.10.2 Expected Result
 
-RO should create successfully.
+RO should be created successfully
 
-Vehicle should appear in Vehicle Required Attention tracking.
+The vehicle should appear in the Vehicle Required Attention tracking
 
 5. Customer Messages Module
 
-Description
+5.1 Description
 
 The Customer Messages module allows users to manage customer communications and service-related conversations.
 
-Features
+5.2 Features
 
 Customer Conversations
 
@@ -568,11 +586,11 @@ Create RO Access
 
 Profile Access
 
-Communication Flow
+5.3 Communication Workflow
 
 Customer Messages→ View Customer Conversations→ AI Complaint Detection→ Quick Reply / Call / Camera Actions
 
-AI Complaint Detection
+5.4 AI Complaint Detection
 
 Description
 
@@ -582,17 +600,17 @@ Detected complaints are attached to the Job Card automatically.
 
 Expected Result
 
-AI should detect complaints correctly.
+AI should detect complaints correctly
 
-Complaints should attach to Job Cards successfully.
+Complaints should attach to Job Cards successfully
 
 6. Today’s Appointments Module
 
-Description
+6.1 Description
 
 Displays appointments scheduled for the current day.
 
-Appointment Categories
+6.2 Appointment Categories
 
 All
 
@@ -606,7 +624,7 @@ Call In
 
 Auto Reminder
 
-Features
+6.3 Features
 
 Appointment Filtering
 
@@ -616,23 +634,23 @@ Create RO Access
 
 Profile Access
 
-Flow
+6.4 Workflow
 
 Today's Appointments→ View Appointment Categories→ Filter Appointment Type→ View Appointment Counts
 
-Expected Result
+6.5 Expected Result
 
-Appointment counts should update dynamically.
+Appointment counts should update dynamically
 
-Appointments should filter correctly.
+Appointments should filter correctly
 
 7. Vehicle Required Attention Module
 
-Description
+7.1 Description
 
 Tracks all vehicles currently under service and their workflow stages.
 
-Features
+7.2 Features
 
 Vehicle Search
 
@@ -648,7 +666,7 @@ Create RO Access
 
 Profile Access
 
-Status Categories
+7.3 Status Categories
 
 Estimation Request
 
@@ -666,23 +684,23 @@ Invoice
 
 Delivered
 
-Flow
+7.4 Workflow
 
 Vehicle Required Attention→ View In-Service Vehicles→ Filter by Service Stage→ Track Vehicle Progress→ Service History / Estimate Actions
 
-Expected Result
+7.5 Expected Result
 
-Vehicles should display in correct stages.
+Vehicles should display in the correct stages
 
-Vehicle progress should update dynamically.
+Vehicle progress should update dynamically
 
 8. Customer Payments Pending Module
 
-Description
+8.1 Description
 
 Tracks customers with pending invoice payments and payment follow-ups.
 
-Features
+8.2 Features
 
 Pending Payment Tracking
 
@@ -694,19 +712,19 @@ Create RO Access
 
 Profile Access
 
-Flow
+8.3 Workflow
 
 Customer Payments Pending→ View Pending Customers→ Track Pending Payments
 
-Expected Result
+8.4 Expected Result
 
-Pending payments should display correctly.
+Pending payments should display correctly
 
-Payment counts should update dynamically.
+Payment counts should update dynamically
 
 9. Common Navigation Features
 
-Create RO Access
+9.1 Create RO Access
 
 Description
 
@@ -714,19 +732,45 @@ Users can access Create RO from every module.
 
 Expected Result
 
-User should be able to navigate to Create RO successfully from any module.
+Users should navigate to Create RO successfully from any module.
 
-9. Profile Access Module
-
-Feature: User Profile &amp; Workshop Settings
+9.2 Profile Access
 
 Description
 
+Users can access the Profile module from every major module in the application through the Profile Icon available in the top-right corner.
+
+The Profile module provides quick access to:
+
+User Profile Information
+
+Workshop Information
+
+Subscription Details
+
+Enabled Features
+
+Privacy Settings
+
+Language Settings
+
+Workspace Settings
+
+Sign Out Option
+
+Expected Result
+
+Users should navigate to the Profile module successfully from any module.
+
+10. Profile Access Module
+
+10.1 Overview
+
 The Profile module allows users to view workshop information, subscription details, enabled capabilities, privacy settings, application settings, and account-related configurations.
 
-Users can access the Profile module from the top-right Profile Icon available across all major modules in the application.
+Users can access the Profile module from the top-right Profile Icon available across all major modules.
 
-Available Sections
+10.2 Available Sections
 
 User Profile Information
 
@@ -750,7 +794,7 @@ App Version Information
 
 Sign Out Option
 
-9.1 User Profile Information
+10.3 User Profile Information
 
 Description
 
@@ -778,11 +822,11 @@ Active
 
 Expected Result
 
-User profile information should display correctly.
+User profile information should display correctly
 
-Account status should update dynamically.
+Account status should update dynamically
 
-9.2 Workshop Information
+10.4 Workshop Information
 
 Description
 
@@ -798,9 +842,9 @@ GST Registration Status
 
 Expected Result
 
-Workshop details should display correctly.
+Workshop details should display correctly
 
-9.3 Contact &amp; Location Details
+10.5 Contact &amp; Location Details
 
 Description
 
@@ -826,9 +870,9 @@ View Address Information
 
 Expected Result
 
-Contact and location details should display correctly.
+Contact and location details should display correctly
 
-9.4 Plan &amp; Subscription
+10.6 Plan &amp; Subscription
 
 Description
 
@@ -852,13 +896,13 @@ Package Upgrade Information
 
 Expected Result
 
-Subscription plan and validity details should display correctly.
+Subscription plan and validity details should display correctly
 
-9.5 Enabled Capabilities
+10.7 Enabled Capabilities
 
 Description
 
-Displays features enabled based on the workshop package and user access profile.
+Displays features enabled based on workshop package and user access profile.
 
 Available Capabilities
 
@@ -874,9 +918,9 @@ Additional Package Features
 
 Expected Result
 
-Enabled capabilities should display dynamically based on subscription plan.
+Enabled capabilities should display dynamically based on subscription plan
 
-9.6 Package Features
+10.8 Package Features
 
 Description
 
@@ -894,9 +938,9 @@ Additional Features (+More)
 
 Expected Result
 
-Package feature list should display correctly.
+Package feature list should display correctly
 
-9.7 Privacy &amp; Data Settings
+10.9 Privacy &amp; Data Settings
 
 Description
 
@@ -910,13 +954,21 @@ Regional Data Processing Information
 
 Expected Result
 
-Privacy status should display correctly.
+Privacy status should display correctly
 
-9.8 App Language Settings
+10.10 App Language Settings
 
 Description
 
 Allows users to view and change the application language.
+
+Currently, the mobile application supports the following languages:
+
+English
+
+Arabic
+
+Additional language support may be introduced in future releases based on business requirements.
 
 Features
 
@@ -924,9 +976,11 @@ Current Language Display
 
 Language Selection Dropdown
 
-Flow
+Multi-Language Support
 
-User clicks on App Language section.
+Workflow
+
+User clicks on the App Language section.
 
 Language selection options are displayed.
 
@@ -934,11 +988,15 @@ User selects preferred language.
 
 Application updates language settings.
 
+The application interface refreshes with the selected language.
+
 Expected Result
 
-Selected language should update successfully.
+The selected language should update successfully
 
-9.9 Workspace Settings
+Application content should display in the selected language correctly
+
+10.11 Workspace Settings
 
 Description
 
@@ -954,13 +1012,13 @@ Workspace Defaults
 
 Expected Result
 
-Workspace settings information should display correctly.
+Workspace settings information should display correctly
 
-9.10 App Version Information
+10.12 App Version Information
 
 Description
 
-Displays the currently installed application version.
+Displays currently installed application version.
 
 Available Information
 
@@ -970,28 +1028,34 @@ Build Information
 
 Expected Result
 
-Current app version should display correctly.
+Current app version should display correctly
 
-9.11 Sign Out
+10.13 Sign Out
 
 Description
 
 Allows users to securely log out from the application.
 
-Flow
+Workflow
 
 User clicks on Sign Out.
 
-System logs out the user securely.
+System logs out user securely.
 
 User is redirected to Login screen.
 
 Expected Result
 
-User should log out successfully.
+User should log out successfully
 
-Session should terminate securely.
+Session should terminate securely
 
-10. Overall Application Navigation Flow
+11. Overall Application Navigation Flow
 
 Login→ Dashboard→ Customer Messages / Appointments / Vehicle Attention / Payments→ Create RO→ Vehicle Inspection→ Service Workflow→ Estimate &amp; Approval→ Work Progress→ Invoice &amp; Delivery→ Payment Completion
+
+12. Summary
+
+The Mobile Application provides a complete digital workflow solution for workshop and garage management. The application simplifies repair order creation, inspection handling, customer communication, appointment management, vehicle tracking, and payment monitoring through an integrated mobile platform.
+
+The platform improves operational visibility, reduces manual processes, enhances service efficiency, and enables better customer experience management for workshop operations.

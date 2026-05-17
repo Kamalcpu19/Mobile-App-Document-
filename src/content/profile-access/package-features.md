@@ -1,7 +1,7 @@
 ---
 title: "Package Features"
 description: "Displays workshop package-enabled modules and operational features."
-lastUpdated: May 15, 2026
+lastUpdated: May 17, 2026
 ---
 
 # Package Features
@@ -28,4 +28,4 @@ lastUpdated: May 15, 2026
 
 
 
-- Package feature list should display correctly.
+- Package feature list should display correctly
