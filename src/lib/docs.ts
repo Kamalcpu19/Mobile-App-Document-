@@ -6,6 +6,7 @@ import {
   getDocHref,
   getSectionId,
 } from "@/lib/doc-navigation";
+import { extractToc } from "@/lib/toc";
 import type {
   DocsNavigation,
   Module,
@@ -13,8 +14,9 @@ import type {
   DocPageMeta,
   DocSection,
   SearchResult,
-  TocItem,
 } from "@/types/docs";
+
+export { extractToc };
 
 const navigation = navigationData as DocsNavigation;
 const CONTENT_DIR = path.join(process.cwd(), "src/content");
@@ -112,24 +114,6 @@ export function getDocContent(
       lastUpdated: data.lastUpdated as string | undefined,
     },
   };
-}
-
-export function extractToc(markdown: string): TocItem[] {
-  const headingRegex = /^(#{2,4})\s+(.+)$/gm;
-  const items: TocItem[] = [];
-  let match: RegExpExecArray | null;
-
-  while ((match = headingRegex.exec(markdown)) !== null) {
-    const level = match[1].length;
-    const title = match[2].replace(/`([^`]+)`/g, "$1").trim();
-    const id = title
-      .toLowerCase()
-      .replace(/[^\w\s-]/g, "")
-      .replace(/\s+/g, "-");
-    items.push({ id, title, level });
-  }
-
-  return items;
 }
 
 export function searchDocs(query: string): SearchResult[] {

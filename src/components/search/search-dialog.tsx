@@ -5,12 +5,14 @@ import { useRouter } from "next/navigation";
 import { FileText, FolderOpen, Search } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useDocsScrollOptional } from "@/components/providers/docs-scroll-provider";
+import { useSidebar } from "@/components/providers/sidebar-provider";
 import { cn } from "@/lib/utils";
 import type { SearchResult } from "@/types/docs";
 
 export function SearchDialog() {
   const router = useRouter();
   const docsScroll = useDocsScrollOptional();
+  const { close: closeSidebar } = useSidebar();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
@@ -50,9 +52,19 @@ export function SearchDialog() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
 
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
+
   const navigate = (href: string) => {
     setOpen(false);
     setQuery("");
+    closeSidebar();
 
     const match = href.match(/^\/docs\/([^/]+)\/([^/]+)$/);
     if (docsScroll && match) {
@@ -83,11 +95,12 @@ export function SearchDialog() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex h-9 items-center gap-2 rounded-lg border border-border bg-card px-3 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+        className="touch-manipulation inline-flex h-10 min-w-10 items-center justify-center gap-2 rounded-lg border border-border bg-card px-2.5 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground sm:min-w-0 sm:px-3"
+        aria-label="Search documentation"
       >
-        <Search className="h-4 w-4" />
+        <Search className="h-4 w-4 shrink-0" />
         <span className="hidden sm:inline">Search docs...</span>
-        <kbd className="hidden rounded border border-border bg-muted px-1.5 py-0.5 text-xs font-mono sm:inline">
+        <kbd className="hidden rounded border border-border bg-muted px-1.5 py-0.5 text-xs font-mono md:inline">
           Ctrl+K
         </kbd>
       </button>
@@ -101,29 +114,37 @@ export function SearchDialog() {
               exit={{ opacity: 0 }}
               className="fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm"
               onClick={() => setOpen(false)}
+              aria-hidden
             />
             <motion.div
-              initial={{ opacity: 0, scale: 0.96, y: -8 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.96, y: -8 }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 16 }}
               transition={{ duration: 0.2 }}
-              className="fixed left-1/2 top-[15%] z-[70] w-full max-w-lg -translate-x-1/2 px-4"
+              className={cn(
+                "fixed z-[70] w-full",
+                "inset-x-0 bottom-0 sm:inset-x-auto sm:left-1/2 sm:top-[12%] sm:max-w-lg sm:-translate-x-1/2 sm:px-4"
+              )}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Search documentation"
             >
-              <div className="overflow-hidden rounded-xl border border-border bg-card shadow-2xl">
+              <div className="overflow-hidden rounded-t-2xl border border-border bg-card shadow-2xl sm:rounded-xl">
                 <div className="flex items-center gap-3 border-b border-border px-4">
                   <Search className="h-4 w-4 shrink-0 text-muted-foreground" />
                   <input
                     autoFocus
-                    type="text"
+                    type="search"
+                    enterKeyHint="search"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     onKeyDown={handleKeyDown}
                     placeholder="Search modules and pages..."
-                    className="flex-1 bg-transparent py-3.5 text-sm outline-none placeholder:text-muted-foreground"
+                    className="min-h-[48px] flex-1 bg-transparent py-3 text-base outline-none placeholder:text-muted-foreground sm:text-sm"
                   />
                 </div>
 
-                <div className="max-h-72 overflow-y-auto custom-scrollbar">
+                <div className="max-h-[min(50vh,20rem)] overflow-y-auto custom-scrollbar sm:max-h-72">
                   {loading && (
                     <p className="px-4 py-6 text-center text-sm text-muted-foreground">
                       Searching...
@@ -135,14 +156,14 @@ export function SearchDialog() {
                     </p>
                   )}
                   {!loading && results.length > 0 && (
-                    <ul className="p-2">
+                    <ul className="p-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
                       {results.map((result, index) => (
                         <li key={`${result.href}-${index}`}>
                           <button
                             type="button"
                             onClick={() => navigate(result.href)}
                             className={cn(
-                              "flex w-full items-start gap-3 rounded-lg px-3 py-2.5 text-left text-sm transition-colors",
+                              "touch-manipulation flex w-full min-h-[44px] items-start gap-3 rounded-lg px-3 py-3 text-left text-sm transition-colors sm:py-2.5",
                               index === selectedIndex
                                 ? "bg-primary/10 text-primary"
                                 : "hover:bg-muted"
@@ -153,7 +174,7 @@ export function SearchDialog() {
                             ) : (
                               <FileText className="mt-0.5 h-4 w-4 shrink-0" />
                             )}
-                            <div className="min-w-0">
+                            <div className="min-w-0 flex-1">
                               <p className="font-medium">{result.title}</p>
                               {result.description && (
                                 <p className="truncate text-xs text-muted-foreground">

@@ -62,7 +62,7 @@ export function CodeBlock({ children, language, className }: CodeBlockProps) {
             )}
           </button>
         )}
-        <pre className="overflow-x-auto rounded-lg border border-border bg-muted/30 p-4 text-sm">
+        <pre className="overflow-x-auto rounded-lg border border-border bg-muted/30 p-3 text-xs sm:p-4 sm:text-sm">
           <code className="hljs">{children}</code>
         </pre>
       </div>

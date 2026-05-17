@@ -55,15 +55,24 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-background text-foreground antialiased;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   html:has(.docs-shell),
   html:has(.docs-shell) body {
     @apply h-full overflow-hidden;
+  }
+}
+
+@layer utilities {
+  .touch-manipulation {
+    touch-action: manipulation;
   }
 }
 
@@ -93,6 +102,18 @@ article.prose-docs-markdown :is(h1, h2, h3, h4, h5, h6) a {
 
 article.prose-docs-markdown :is(h1, h2, h3, h4, h5, h6) a:hover {
   @apply text-inherit no-underline;
+}
+
+article.prose-docs-markdown img {
+  @apply h-auto max-w-full rounded-lg;
+}
+
+article.prose-docs-markdown :is(ul, ol) {
+  @apply pl-5 sm:pl-6;
+}
+
+article.prose-docs-markdown table {
+  @apply min-w-full;
 }
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;

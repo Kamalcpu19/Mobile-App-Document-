@@ -78,9 +78,8 @@ export function ContinuousDocViewer() {
             data-section-id={section.sectionId}
             ref={(el) => registerSectionElement(section.sectionId, el)}
             className={cn(
-              "scroll-mt-8 border-b border-border py-12 last:border-b-0",
-              "content-visibility-auto",
-              index === 0 && "pt-4"
+              "scroll-mt-[calc(3.75rem+1rem)] border-b border-border py-8 content-visibility-auto last:border-b-0 sm:scroll-mt-24 sm:py-10 md:py-12",
+              index === 0 && "pt-2 sm:pt-4"
             )}
           >
             <motion.div
@@ -96,12 +95,12 @@ export function ContinuousDocViewer() {
                 className="mb-6"
               />
 
-              <header className="mb-8 border-b border-border pb-6">
-                <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              <header className="mb-6 border-b border-border pb-5 sm:mb-8 sm:pb-6">
+                <h2 className="text-2xl font-bold tracking-tight text-balance text-foreground sm:text-3xl md:text-4xl">
                   {section.title}
                 </h2>
                 {section.description && (
-                  <p className="mt-3 text-lg text-muted-foreground">
+                  <p className="mt-2 text-base text-muted-foreground sm:mt-3 sm:text-lg">
                     {section.description}
                   </p>
                 )}

@@ -6,13 +6,20 @@ import type { TocItem } from "@/types/docs";
 
 interface TableOfContentsProps {
   items: TocItem[];
+  variant?: "sidebar" | "inline";
 }
 
-export function TableOfContents({ items }: TableOfContentsProps) {
+export function TableOfContents({
+  items,
+  variant = "sidebar",
+}: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>("");
 
   useEffect(() => {
     if (items.length === 0) return;
+
+    const scrollRoot =
+      document.getElementById("docs-scroll-container") ?? undefined;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -24,7 +31,11 @@ export function TableOfContents({ items }: TableOfContentsProps) {
           setActiveId(visible[0].target.id);
         }
       },
-      { rootMargin: "-80px 0px -70% 0px", threshold: 0 }
+      {
+        root: scrollRoot,
+        rootMargin: "-5rem 0px -70% 0px",
+        threshold: 0,
+      }
     );
 
     for (const item of items) {
@@ -37,33 +48,54 @@ export function TableOfContents({ items }: TableOfContentsProps) {
 
   if (items.length === 0) return null;
 
+  const handleClick = (id: string) => {
+    const el = document.getElementById(id);
+    const container = document.getElementById("docs-scroll-container");
+    if (el && container) {
+      const top =
+        el.getBoundingClientRect().top -
+        container.getBoundingClientRect().top +
+        container.scrollTop -
+        80;
+      container.scrollTo({ top, behavior: "smooth" });
+    } else {
+      el?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
-    <aside className="hidden xl:block">
-      <div className="sticky top-20">
+    <nav aria-label="On this page">
+      {variant === "sidebar" && (
         <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
           On this page
         </p>
-        <ul className="space-y-1 border-l border-border">
-          {items.map((item) => (
-            <li key={item.id}>
-              <a
-                href={`#${item.id}`}
-                className={cn(
-                  "block border-l-2 py-1 text-sm transition-colors -ml-px",
-                  item.level === 2 && "pl-3",
-                  item.level === 3 && "pl-5",
-                  item.level === 4 && "pl-7",
-                  activeId === item.id
-                    ? "border-primary font-medium text-primary"
-                    : "border-transparent text-muted-foreground hover:text-foreground"
-                )}
-              >
-                {item.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </aside>
+      )}
+      <ul
+        className={cn(
+          "space-y-1",
+          variant === "sidebar" && "border-l border-border"
+        )}
+      >
+        {items.map((item) => (
+          <li key={item.id}>
+            <button
+              type="button"
+              onClick={() => handleClick(item.id)}
+              className={cn(
+                "touch-manipulation block w-full border-l-2 py-1.5 text-left text-sm transition-colors -ml-px",
+                item.level === 2 && "pl-3",
+                item.level === 3 && "pl-5",
+                item.level === 4 && "pl-7",
+                activeId === item.id
+                  ? "border-primary font-medium text-primary"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
+              )}
+            >
+              {item.title}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }

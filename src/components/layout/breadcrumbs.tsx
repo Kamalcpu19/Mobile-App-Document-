@@ -14,7 +14,10 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
   return (
     <nav
       aria-label="Breadcrumb"
-      className={cn("flex items-center gap-1 text-sm text-muted-foreground", className)}
+      className={cn(
+        "flex min-w-0 items-center gap-1 overflow-x-auto text-sm text-muted-foreground custom-scrollbar",
+        className
+      )}
     >
       <Link
         href="/"
@@ -27,7 +30,10 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
         const isLast = index === items.length - 1;
 
         return (
-          <span key={`${item.label}-${index}`} className="flex items-center gap-1">
+          <span
+            key={`${item.label}-${index}`}
+            className="flex shrink-0 items-center gap-1"
+          >
             <ChevronRight className="h-3.5 w-3.5 opacity-50" />
             {item.href && !isLast ? (
               <Link
@@ -39,6 +45,7 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
             ) : (
               <span
                 className={cn(
+                  "max-w-[12rem] truncate sm:max-w-none",
                   isLast && "font-medium text-foreground"
                 )}
                 aria-current={isLast ? "page" : undefined}

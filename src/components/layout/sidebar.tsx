@@ -39,6 +39,9 @@ const iconMap: Record<string, LucideIcon> = {
   user: User,
 };
 
+const sidebarPanelClass =
+  "flex h-full min-h-0 w-[min(100vw-2rem,18rem)] shrink-0 flex-col overflow-hidden border-r border-sidebar-border bg-sidebar sm:w-64 md:w-72 lg:w-72 xl:w-80";
+
 interface SidebarProps {
   modules: Module[];
 }
@@ -48,7 +51,8 @@ export function Sidebar({ modules }: SidebarProps) {
   const { isOpen, close } = useSidebar();
   const { activeSectionId, scrollToSection } = useDocsScroll();
   const activeItemRef = useRef<HTMLButtonElement | null>(null);
-  const sidebarScrollRef = useRef<HTMLDivElement | null>(null);
+  const desktopScrollRef = useRef<HTMLDivElement | null>(null);
+  const mobileScrollRef = useRef<HTMLDivElement | null>(null);
 
   const activeFromUrl = useMemo(() => {
     const match = pathname.match(/^\/docs\/([^/]+)\/([^/]+)/);
@@ -56,7 +60,6 @@ export function Sidebar({ modules }: SidebarProps) {
     return getSectionId(match[1], match[2]);
   }, [pathname]);
 
-  // Prefer scroll state over URL (URL updates are debounced during scroll)
   const currentSectionId = activeSectionId || activeFromUrl;
 
   const activeModuleSlug = useMemo(() => {
@@ -76,14 +79,18 @@ export function Sidebar({ modules }: SidebarProps) {
     }
   }, [activeModuleSlug]);
 
-  // Auto-scroll sidebar to keep active item visible
   useEffect(() => {
-    if (!activeItemRef.current || !sidebarScrollRef.current) return;
+    close();
+  }, [pathname, close]);
+
+  useEffect(() => {
+    const scrollEl = isOpen ? mobileScrollRef.current : desktopScrollRef.current;
+    if (!activeItemRef.current || !scrollEl) return;
     activeItemRef.current.scrollIntoView({
       block: "nearest",
       behavior: "smooth",
     });
-  }, [currentSectionId]);
+  }, [currentSectionId, isOpen]);
 
   const toggleModule = (slug: string) => {
     setExpanded((prev) => {
@@ -113,12 +120,12 @@ export function Sidebar({ modules }: SidebarProps) {
         const isModuleActive = activeModuleSlug === mod.slug;
 
         return (
-          <motion.div key={mod.id} initial={false} className="rounded-lg">
+          <div key={mod.id} className="rounded-lg">
             <button
               type="button"
               onClick={() => toggleModule(mod.slug)}
               className={cn(
-                "flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors duration-200",
+                "touch-manipulation flex w-full min-h-[44px] items-center gap-2 rounded-lg px-3 py-2.5 text-left text-sm font-medium transition-colors duration-200",
                 isModuleActive
                   ? "bg-sidebar-accent text-primary"
                   : "text-sidebar-foreground hover:bg-sidebar-accent/60"
@@ -155,7 +162,7 @@ export function Sidebar({ modules }: SidebarProps) {
                             ref={isActive ? activeItemRef : undefined}
                             onClick={() => handleNavClick(mod.slug, sub.slug)}
                             className={cn(
-                              "group flex w-full items-center gap-2 rounded-md px-2.5 py-1.5 text-left text-sm transition-all duration-200",
+                              "touch-manipulation group flex w-full min-h-[40px] items-center gap-2 rounded-md px-2.5 py-2 text-left text-sm transition-all duration-200",
                               isActive
                                 ? "bg-primary/10 font-medium text-primary shadow-sm"
                                 : "text-muted-foreground hover:bg-sidebar-accent/50 hover:text-foreground"
@@ -165,7 +172,7 @@ export function Sidebar({ modules }: SidebarProps) {
                               className={cn(
                                 "h-3 w-3 shrink-0 transition-opacity",
                                 isActive
-                                  ? "opacity-100 text-primary"
+                                  ? "text-primary opacity-100"
                                   : "opacity-0 group-hover:opacity-50"
                               )}
                             />
@@ -178,7 +185,7 @@ export function Sidebar({ modules }: SidebarProps) {
                 </motion.div>
               )}
             </AnimatePresence>
-          </motion.div>
+          </div>
         );
       })}
     </nav>
@@ -186,9 +193,12 @@ export function Sidebar({ modules }: SidebarProps) {
 
   return (
     <>
-      <aside className="hidden h-full min-h-0 w-72 shrink-0 flex-col overflow-hidden border-r border-sidebar-border bg-sidebar lg:flex">
+      <aside
+        className={cn(sidebarPanelClass, "hidden lg:flex")}
+        aria-label="Documentation sidebar"
+      >
         <div
-          ref={sidebarScrollRef}
+          ref={desktopScrollRef}
           className="custom-scrollbar min-h-0 flex-1 overflow-y-auto overscroll-contain"
         >
           {sidebarContent}
@@ -203,20 +213,27 @@ export function Sidebar({ modules }: SidebarProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-40 bg-black/50 lg:hidden"
+              className="fixed inset-0 z-40 bg-black/50 backdrop-blur-[2px] lg:hidden"
               onClick={close}
               aria-hidden
             />
             <motion.aside
+              id="mobile-docs-sidebar"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Documentation navigation"
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 28, stiffness: 320 }}
-              className="fixed inset-y-0 left-0 z-50 flex w-72 flex-col overflow-hidden border-r border-sidebar-border bg-sidebar pt-[3.75rem] lg:hidden"
+              className={cn(
+                sidebarPanelClass,
+                "fixed inset-y-0 left-0 z-50 pt-[calc(3.5rem+env(safe-area-inset-top))] sm:pt-[calc(3.75rem+env(safe-area-inset-top))] lg:hidden"
+              )}
             >
               <div
-                ref={sidebarScrollRef}
-                className="custom-scrollbar min-h-0 flex-1 overflow-y-auto overscroll-contain"
+                ref={mobileScrollRef}
+                className="custom-scrollbar min-h-0 flex-1 overflow-y-auto overscroll-contain pb-[env(safe-area-inset-bottom)]"
               >
                 {sidebarContent}
               </div>

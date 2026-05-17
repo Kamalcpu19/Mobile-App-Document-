@@ -96,23 +96,37 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
         </h4>
       );
     },
+    img({ src, alt, ...props }) {
+      return (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={src}
+          alt={alt ?? ""}
+          loading="lazy"
+          className="my-4 h-auto max-w-full rounded-lg border border-border"
+          {...props}
+        />
+      );
+    },
     table({ children }) {
       return (
-        <div className="my-6 overflow-x-auto rounded-lg border border-border">
-          <table className="w-full text-sm">{children}</table>
+        <div className="my-6 -mx-1 overflow-x-auto rounded-lg border border-border sm:mx-0">
+          <table className="w-full min-w-[min(100%,32rem)] text-sm">{children}</table>
         </div>
       );
     },
     th({ children }) {
       return (
-        <th className="border-b border-border bg-muted/50 px-4 py-2 text-left font-semibold">
+        <th className="whitespace-nowrap border-b border-border bg-muted/50 px-3 py-2 text-left text-xs font-semibold sm:px-4 sm:text-sm">
           {children}
         </th>
       );
     },
     td({ children }) {
       return (
-        <td className="border-b border-border px-4 py-2">{children}</td>
+        <td className="border-b border-border px-3 py-2 text-xs sm:px-4 sm:text-sm">
+          {children}
+        </td>
       );
     },
     blockquote({ children }) {
