@@ -543,7 +543,7 @@ function writeContent(sections) {
 
     let markdown = formatFlowPageBody(sec.title, sec.bodyLines);
     if (sec.module === "introduction" && sec.slug === "overview") {
-      markdown = `### Document Information\n\n${buildDocInfoTable()}\n\n${markdown}`;
+      markdown = `**Document Information**\n\n${buildDocInfoTable()}\n\n${markdown}`;
     }
 
     const description = firstDescription(sec.bodyLines) || sec.title;
